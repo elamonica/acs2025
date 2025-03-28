@@ -17,11 +17,24 @@ class CatalogTest {
 
     @Test()
     public void CatalogoConocePrecioDeProducto() {
+        HashMap<Product, Integer> listaDePrecios =  new HashMap<>();
+        Product aProduct = new Product("arroz");
+        listaDePrecios.put(aProduct, 10);
 
+        Catalog aCatalog = new Catalog(new Date(), listaDePrecios);
+
+        assertEquals(10, aCatalog.getPriceOf(aProduct));
     }
 
     @Test()
-    public void SiCatalogoNoConoceProducto....() {
+    public void SiCatalogoNoConoceProductoDebeLanzarUnError() throws IllegalArgumentException {
+        HashMap<Product, Integer> listaDePrecios =  new HashMap<>();
+        Product aProduct = new Product("arroz");
+        listaDePrecios.put(aProduct, 10);
+        Catalog aCatalog = new Catalog(new Date(), listaDePrecios);
 
+        Product aNonExistProduct = new Product("FIDEOS");
+
+        assertThrows(IllegalArgumentException.class, () -> aCatalog.getPriceOf(aNonExistProduct));
     }
 }

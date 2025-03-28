@@ -2,6 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
+    public List<Product> getProducts() {
+        return products;
+    }
+
     private final List<Product> products;
 
     public Cart() {
@@ -27,4 +31,5 @@ public class Cart {
     public void remove(Product aProduct) {
         this.products.remove(aProduct);
     }
+
 }

@@ -12,4 +12,11 @@ public class Catalog {
         this.fechaDeVigencia = unaFechaDeVigencia;
         this.listaDePrecios = unaListaDePrecios;
     }
+
+    public int getPriceOf(Product aProduct) {
+        if (!listaDePrecios.containsKey(aProduct)) {
+            throw new IllegalArgumentException("El producto no existe " + aProduct);
+        }
+        return listaDePrecios.get(aProduct);
+    }
 }
